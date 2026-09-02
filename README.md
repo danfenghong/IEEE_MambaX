@@ -10,12 +10,11 @@ Chenyu Li, [Danfeng Hong](https://scholar.google.com/citations?hl=en&user=n7gL0_
 ## 📄 Abstract
 Image super-resolution (SR) is a critical technology for overcoming the inherent hardware limitations of sensors. However, existing approaches mainly focus on directly enhancing the final resolution, often neglecting effective control over error propagation and accumulation during intermediate stages. Recently, Mamba has emerged as a promising approach that can represent the entire reconstruction process as a state sequence with multiple nodes, allowing for intermediate intervention. Nonetheless, its fixed linear mapper is limited by a narrow receptive field and restricted flexibility, which hampers its effectiveness in fine-grained images. To address this, we created a nonlinear state predictive control model MambaX that maps consecutive spectral bands into a latent state space and generalizes the SR task by dynamically learning the nonlinear state parameters of control equations. Compared to existing sequence models, MambaX 1) employs dynamic state predictive control learning to approximate the nonlinear differential coefficients of state-space models; 2) introduces a novel state cross-control paradigm for multimodal SR fusion; and 3) utilizes progressive transitional learning to mitigate heterogeneity caused by domain and modality shifts. Our evaluation demonstrates the superior performance of the dynamic spectrum-state representation model in both single-image SR and multimodal fusion-based SR tasks, highlighting its substantial potential to advance spectrally generalized modeling across arbitrary dimensions and modalities.
 
----
+
 ## 👀 Overview
 
 ![alt text](./Framework.png)
 
----
 
 ## 🛠️ Environment Preparation
 
@@ -31,9 +30,6 @@ and set up the environment by running:
 ```bash
 bash install.sh
 ```
-
----
-
 
 ## 📋 Data Preparation
 
@@ -73,9 +69,7 @@ data/multimodal/
         └── test_gf2_multiExm1.h5
 ```
 
-
-
-## Training
+## 🚀 Training
 
 Example: Pavia ×2
 
@@ -136,7 +130,7 @@ or:
 
 The paper reports 150 training epochs for the single-modal experiments. The initial learning rate is `1e-4` for CAVE and `3e-4` for Pavia and Chikusei, with the learning rate halved every 30 epochs.
 
-## Testing
+## 🚀 Testing
 
 A checkpoint must be provided explicitly.
 
@@ -158,9 +152,8 @@ Replace `/path/to/model.pth` with the checkpoint to be evaluated.
 
 The test procedure computes hyperspectral reconstruction metrics and saves reconstructed outputs for further analysis.
 
----
 
-# Multimodal Fusion Super-Resolution
+- **Multimodal Fusion Super-Resolution** 
 
 Change to:
 
@@ -172,7 +165,7 @@ The multimodal training code uses Adam optimization and the HLoss objective impl
 
 The paper reports 500 epochs for multimodal fusion experiments with an initial learning rate of `7e-4`.
 
----
+
 
 ## WV3 Training
 
