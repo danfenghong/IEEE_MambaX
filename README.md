@@ -1,5 +1,5 @@
 <div align="center">
-<h1>MambaX: Image Super-Resolution with State Predictive Control 
+<h1> ![alt text](./logo.png)MambaX: Image Super-Resolution with State Predictive Control 
 </h1> 
 
 Chenyu Li, [Danfeng Hong](https://scholar.google.com/citations?hl=en&user=n7gL0_IAAAAJ&view_op=list_works&sortby=pubdate), Bing Zhang, et al.
