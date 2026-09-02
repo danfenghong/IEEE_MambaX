@@ -23,6 +23,13 @@ Install Python dependencies by running:
 
 ```bash
 pip install -r requirements.txt
+
+```
+
+and set up the environment by running:
+
+```bash
+bash install.sh
 ```
 
 ---
