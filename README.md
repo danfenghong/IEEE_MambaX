@@ -12,7 +12,7 @@ The repository contains the code required for two image super-resolution setting
 ## Framework
 
 <p align="center">
-  <img src="assets/mambax_framework.png" width="100%" alt="MambaX Framework">
+  <img src="Framework.png" width="100%" alt="MambaX Framework">
 </p>
 
 <p align="center">
