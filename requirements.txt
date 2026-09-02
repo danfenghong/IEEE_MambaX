@@ -1,0 +1,11 @@
+numpy==1.26.4
+scipy==1.13.1
+h5py==3.11.0
+opencv-python==4.10.0.84
+einops==0.8.0
+thop==0.1.1
+tensorboardX
+torchnet
+pytorch-msssim
+packaging
+ninja
