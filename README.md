@@ -1,6 +1,23 @@
-# MambaX
+<div align="center">
+<h1>MambaX: Image Super-Resolution with State Predictive Control 
+</h1> 
 
-This repository provides a cleaned and reproduction-oriented implementation of **MambaX: Image Super-Resolution with State Predictive Control**.
+Chenyu Li, [Danfeng Hong](https://scholar.google.com/citations?hl=en&user=n7gL0_IAAAAJ&view_op=list_works&sortby=pubdate), Bing Zhang, et al.
+
+IEEE Transactions on Pattern Analysis and Machine Intelligence: ([https://ieeexplore.ieee.org/document/11646487](https://ieeexplore.ieee.org/document/11646487))
+</div>
+
+## 📄 Abstract
+Image super-resolution (SR) is a critical technology for overcoming the inherent hardware limitations of sensors. However, existing approaches mainly focus on directly enhancing the final resolution, often neglecting effective control over error propagation and accumulation during intermediate stages. Recently, Mamba has emerged as a promising approach that can represent the entire reconstruction process as a state sequence with multiple nodes, allowing for intermediate intervention. Nonetheless, its fixed linear mapper is limited by a narrow receptive field and restricted flexibility, which hampers its effectiveness in fine-grained images. To address this, we created a nonlinear state predictive control model MambaX that maps consecutive spectral bands into a latent state space and generalizes the SR task by dynamically learning the nonlinear state parameters of control equations. Compared to existing sequence models, MambaX 1) employs dynamic state predictive control learning to approximate the nonlinear differential coefficients of state-space models; 2) introduces a novel state cross-control paradigm for multimodal SR fusion; and 3) utilizes progressive transitional learning to mitigate heterogeneity caused by domain and modality shifts. Our evaluation demonstrates the superior performance of the dynamic spectrum-state representation model in both single-image SR and multimodal fusion-based SR tasks, highlighting its substantial potential to advance spectrally generalized modeling across arbitrary dimensions and modalities.
+
+---
+## 👀 Overview
+
+![alt text](./Framework.png)
+
+---
+
+
 
 The repository contains the code required for two image super-resolution settings:
 
@@ -9,19 +26,7 @@ The repository contains the code required for two image super-resolution setting
 
 ---
 
-## Framework
 
-<p align="center">
-  <img src="Framework.png" width="100%" alt="MambaX Framework">
-</p>
-
-<p align="center">
-  <em>Overall framework of MambaX.</em>
-</p>
-
-MambaX introduces nonlinear state predictive control into state-space modeling for image super-resolution. The framework contains progressive cross-domain transition, the MambaX block with nonlinear state predictive control, and cross-control fusion for multimodal super-resolution.
-
----
 
 ## Repository Structure
 
