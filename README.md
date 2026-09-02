@@ -17,17 +17,6 @@ Image super-resolution (SR) is a critical technology for overcoming the inherent
 
 ---
 
-
-
-The repository contains the code required for two image super-resolution settings:
-
-- **Single-modal hyperspectral image super-resolution**, including CAVE, Pavia, and Chikusei.
-- **Multimodal fusion super-resolution**, including WorldView-III (WV3) and GaoFen-2 (GF2).
-
----
-
-
-
 ## Repository Structure
 
 The main entry points are:
