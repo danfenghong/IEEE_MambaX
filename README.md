@@ -17,142 +17,22 @@ Image super-resolution (SR) is a critical technology for overcoming the inherent
 
 ---
 
-## Repository Structure
+## 🛠️ Environment Preparation
 
-The main entry points are:
+Install Python dependencies by running:
 
-| Task | Entry |
-|---|---|
-| Single-modal training/testing | `single_modal/mains.py` |
-| WV3 multimodal training | `multimodal/train_w.py` |
-| GF2 multimodal training | `multimodal/train_g.py` |
-| Multimodal reduced-resolution testing | `multimodal/test.py` |
+```bash
+pip install -r requirements.txt
+```
 
 ---
 
-## Environment
 
-The following environment was used for the full reproduction experiments:
+## 📋 Data Preparation
 
-| Package | Version |
-|---|---|
-| Python | 3.9.18 |
-| PyTorch | 1.13.1+cu117 |
-| CUDA used by PyTorch | 11.7 |
-| NumPy | 1.26.4 |
-| SciPy | 1.13.1 |
-| h5py | 3.11.0 |
-| OpenCV | 4.10.0 |
-| einops | 0.8.0 |
-| thop | 0.1.1 |
+Datasets are placed under the repository-level `data/` directory.
 
-A Linux system with an NVIDIA CUDA-capable GPU is recommended because the Mamba selective-scan operators use CUDA extensions.
-
-### 1. Create a Python environment
-
-```bash
-conda create -n mambax python=3.9.18 -y
-conda activate mambax
-```
-
-### 2. Install PyTorch
-
-For the tested CUDA 11.7 configuration:
-
-```bash
-pip install \
-  torch==1.13.1+cu117 \
-  torchvision==0.14.1+cu117 \
-  torchaudio==0.13.1 \
-  --extra-index-url https://download.pytorch.org/whl/cu117
-```
-
-### 3. Install Python dependencies
-
-```bash
-pip install \
-  numpy==1.26.4 \
-  scipy==1.13.1 \
-  h5py==3.11.0 \
-  opencv-python==4.10.0.84 \
-  einops==0.8.0 \
-  thop \
-  tensorboardX \
-  torchnet \
-  pytorch-msssim \
-  packaging \
-  ninja
-```
-
-### 4. Build the bundled Mamba CUDA extensions
-
-The required Mamba and causal-conv1d source code is included under `multimodal/`.
-
-From the repository root:
-
-```bash
-cd multimodal/causal-conv1d
-
-rm -rf build *.egg-info
-CAUSAL_CONV1D_FORCE_BUILD=TRUE pip install .
-
-cd ../mamba
-
-rm -rf build *.egg-info
-MAMBA_FORCE_BUILD=TRUE pip install .
-
-cd ../..
-```
-
-The bundled source currently reports:
-
-```text
-causal-conv1d: 1.0.1
-mamba-ssm:     1.1.1
-```
-
-After installation, the core selective-scan operator can be checked with:
-
-```bash
-python -c "
-from mamba_ssm.ops.selective_scan_interface import selective_scan_fn
-print('selective_scan_fn: OK')
-"
-```
-
-CUDA extension compilation depends on the local PyTorch, CUDA toolkit, compiler, and GPU environment. If rebuilding the extensions, make sure the CUDA toolkit used by the compiler is compatible with the installed PyTorch CUDA build.
-
----
-
-# Data Preparation
-
-The datasets are **not included** in this repository.
-
-The default code assumes that datasets are placed under the repository-level `data/` directory.
-
----
-
-## Single-Modal Data
-
-Supported datasets:
-
-```text
-CAVE
-Pavia
-Chikusei
-```
-
-The default directory rule is:
-
-```text
-data/single_modal/
-└── <dataset_lower>_2/
-    └── <dataset_name>_x<scale>/
-        ├── trains/
-        ├── evals/
-        └── <dataset_name>_test.mat
-```
-
+- **Single-Modal Data**
 For example, Pavia ×2 should be organized as:
 
 ```text
@@ -166,14 +46,9 @@ data/single_modal/
         └── pavia_test.mat
 ```
 
-The same convention is used for ×4 and ×8 experiments.
+The same convention is used for CAVE and Chikusei at ×2, ×4, and ×8 scales.
 
-For Chikusei, use `Chikusei` as the dataset name when calling the script.
-
----
-
-## Multimodal Data
-
+- **Multi-Modal Data**
 The expected multimodal data structure is:
 
 ```text
@@ -191,78 +66,7 @@ data/multimodal/
         └── test_gf2_multiExm1.h5
 ```
 
-Each H5 file uses the following keys:
 
-```text
-gt
-lms
-ms
-pan
-```
-
-### WV3
-
-Training and validation samples use:
-
-```text
-GT/LMS : 8 × 64 × 64
-MS     : 8 × 16 × 16
-PAN    : 1 × 64 × 64
-```
-
-Reduced-resolution test samples use:
-
-```text
-GT/LMS : 8 × 256 × 256
-MS     : 8 × 64 × 64
-PAN    : 1 × 256 × 256
-```
-
-The WV3 loader normalizes the data by `2047`.
-
-### GF2
-
-Training and validation samples use:
-
-```text
-GT/LMS : 4 × 64 × 64
-MS     : 4 × 16 × 16
-PAN    : 1 × 64 × 64
-```
-
-Reduced-resolution test samples use:
-
-```text
-GT/LMS : 4 × 256 × 256
-MS     : 4 × 64 × 64
-PAN    : 1 × 256 × 256
-```
-
-The GF2 loader normalizes the data by `1023`.
-
----
-
-# Single-Modal Super-Resolution
-
-Change to the single-modal directory:
-
-```bash
-cd single_modal
-```
-
-The main script is:
-
-```text
-mains.py
-```
-
-Use:
-
-```bash
-python mains.py --help
-```
-
-to display all configurable arguments.
 
 ## Training
 
@@ -490,36 +294,39 @@ The multimodal training scripts save complete PyTorch model objects using `torch
 
 ---
 
-# Output Files
 
-Multimodal training outputs are written under:
 
-```text
-outputs/multimodal/
+## 📝 Citation
+
+If you find our project helpful, please cite our paper:
+
+C. Li, D. Hong, B. Zhang, et, al. "MambaX: Image Super-Resolution with State Predictive Control," IEEE Transactions on Pattern Analysis and Machine Intelligence, doi: 10.1109/TPAMI.2026.3721958.
+
+```bibtex
+@ARTICLE{11646487,
+  author={Li, Chenyu and Hong, Danfeng and Zhang, Bing and Pan, Zhaojie and Yokoya, Naoto and Chanussot, Jocelyn},
+  journal={IEEE Transactions on Pattern Analysis and Machine Intelligence}, 
+  title={MambaX: Image Super-Resolution with State Predictive Control}, 
+  year={2026},
+  volume={},
+  number={},
+  pages={1-15},
+  doi={10.1109/TPAMI.2026.3721958}}
 ```
-
-with separate WV3 and GF2 experiment directories.
-
-A typical experiment contains:
-
-```text
-<timestamp>/
-├── result/
-│   └── output.txt
-└── model/
-    ├── model_001.pth
-    ├── model_002.pth
-    └── ...
-```
-
-The multimodal test script saves reconstructed samples as `.mat` files.
-
-Runtime outputs, logs, datasets, and model checkpoints are excluded from Git tracking through `.gitignore`.
 
 ---
 
-# Paper
+## 📜 Licensing
 
-**MambaX: Image Super-Resolution with State Predictive Control**
+Copyright © 2026 Danfeng Hong
 
-Paper publication information, project page, and formal citation can be added here.
+This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 3.
+
+---
+
+## 📧 Contact Information
+
+**Danfeng Hong**: hongdanfeng1989@gmail.com  
+School of Automation, Southeast University, 211189 Nanjing, China.
+
+---
