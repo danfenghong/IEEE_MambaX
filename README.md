@@ -50,6 +50,12 @@ data/single_modal/
 ```
 
 The same convention is used for CAVE and Chikusei at ×2, ×4, and ×8 scales.
+ 
+| Dataset       | Download Link                                                                                                        | Checkpoint                                     |
+|---------------|----------------------------------------------------------------------------------------------------------------------|------------------------------------------------------|
+| CAVE    | [Download](https://pan.baidu.com/s/1mLT9qD30LDYBk-SdUEToKQ) with code: `i5qd`        | [Download](https://pan.baidu.com/s/1sNrqBJBX3NrVWamwIHa-SA) with code: `2gkd`                       |
+| Pavia Center       | [Download](https://pan.baidu.com/s/16IWAzFFO4HcIwRB1w20nqQ) with code: `s32h`                                                                    | [Download](https://pan.baidu.com/s/1AWkNMrNh0Qt2P7l6O82NfQ) with code: `vyy3`                       |
+| Washington DC Mall          | [Download](https://pan.baidu.com/s/1A4ihiqlz-8gyLozCJyuwWQ) with code: `w8pb`                             | [Download](https://pan.baidu.com/s/1uvnv67OYJDIy7afiTSRKuw) with code: `95qx`                     |
 
 - **Multi-Modal Data**
 The expected multimodal data structure is:
