@@ -6,8 +6,8 @@
 </h1>
 
 Chenyu Li, [Danfeng Hong](https://scholar.google.com/citations?hl=en&user=n7gL0_IAAAAJ&view_op=list_works&sortby=pubdate), Bing Zhang, et al.
-
-([https://ieeexplore.ieee.org/document/11646487](https://ieeexplore.ieee.org/document/11646487))
+ 
+[https://doi.org/10.1109/TPAMI.2026.3721958](https://doi.org/10.1109/TPAMI.2026.3721958)
 </div>
 
 ## 📄 Abstract
