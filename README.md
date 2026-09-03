@@ -40,7 +40,7 @@ Datasets are placed under the repository-level `data/` directory.
 
 - **Single-Modal Data**
 
->  You may need to manually download the [CAVE](), [pavia](), and [Chikusei]().
+>  You may need to manually download the [CAVE](https://pan.baidu.com/s/15mB03bdToGivx0SKhdMo9g) with `vbp9`, [Pavia](https://pan.baidu.com/s/1BHKiuGZZ_4ZpWBvnuiREHQ) with `xz9h`, and [Chikusei](https://pan.baidu.com/s/1bQayqSjDOImWEz_CZ4GDaw) with `nkq8`.
 
 >  For example, Pavia ×2 should be organized as:
 
@@ -59,7 +59,7 @@ The same convention is used for CAVE and Chikusei at ×2, ×4, and ×8 scales.
 
 - **Multi-Modal Data**
 
->  You may need to manually download the [GF2](), and [WV3]().
+>  You may need to manually download the [GF2](https://pan.baidu.com/s/1p-TnQK_khEuxyMNPAgWCQQ) with `eykq`, and [WV3](https://pan.baidu.com/s/1hZy5yBJ-W-3n4p2zuFANdg) with `ftjd`.
 
 >  The expected multimodal data structure is:
  
